@@ -336,6 +336,8 @@ ind = np.logical_and(z0 == z1, z1 != z2)
 # print('success: ', np.sum(ind))
 
 ind = z0 == z1
+ind, = np.where(z1 != z2)
+
 
 X_test = X_test[ind]
 X_adv = X_adv[ind]
@@ -343,7 +345,7 @@ z1 = z1[ind]
 z2 = z2[ind]
 y2 = y2[ind]
 
-ind, = np.where(z1 != z2)
+
 cur = np.random.choice(ind, size=n_classes)
 X_org = np.squeeze(X_test[cur])
 X_tmp = np.squeeze(X_adv[cur])
